@@ -4,6 +4,10 @@ import random
 This is a test comment !!!
 """
 
+"""
+And another comment (2nd one)!!!
+"""
+
 
 def random_list(quantity, minimum, maximum):
     """
