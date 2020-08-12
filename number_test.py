@@ -51,7 +51,7 @@ for i in range(questions):
         number_list = random_list(quantity, minimum * 2, maximum * 2)
 
     # User is not up to last question
-    else:   # i + 1 < len(range(questions)):
+    else:
         print(f'Question {i + 1} of {questions}.')
         number_list = random_list(quantity, minimum, maximum)
 
