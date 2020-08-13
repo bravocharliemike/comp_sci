@@ -61,6 +61,7 @@ while True:
 score = 0
 
 for i in range(questions):
+
     # User is up to last question so this is Challenge Question
     if i + 1 == len(range(questions)):
         print(f'Question {i + 1} of {questions}.')
@@ -75,43 +76,49 @@ for i in range(questions):
 
     # Randomly show the user different types of questions
     question_type = random.randint(1, 4)
-    if question_type == 1:
-        answer = int(input(f'What is the smallest number in this list? {number_list}\n'
-                           '> '))
-        if answer == min(number_list):
-            print('Correct!\n')
-            score += 1
-        else:
-            print(f'Incorrect! Correct answer was {min(number_list)}\n')
+    while True:
+        try:
+            if question_type == 1:
+                answer = int(input(f'What is the smallest number in this list? {number_list}\n'
+                                   '> '))
+                if answer == min(number_list):
+                    print('Correct!\n')
+                    score += 1
+                else:
+                    print(f'Incorrect! Correct answer was {min(number_list)}\n')
 
-    elif question_type == 2:
-        answer = int(input(f'What is the biggest number in this list? {number_list}\n'
-                           '> '))
-        if answer == max(number_list):
-            print('Correct!\n')
-            score += 1
-        else:
-            print(f'Incorrect! Correct answer was {max(number_list)}\n')
+            elif question_type == 2:
+                answer = int(input(f'What is the biggest number in this list? {number_list}\n'
+                                   '> '))
+                if answer == max(number_list):
+                    print('Correct!\n')
+                    score += 1
+                else:
+                    print(f'Incorrect! Correct answer was {max(number_list)}\n')
 
-    elif question_type == 3:
-        answer = int(input(f'What is the sum of the numbers in this list? {number_list}\n'
-                           '> '))
-        if answer == sum(number_list):
-            print('Correct!\n')
-            score += 1
-        else:
-            print(f'Incorrect! Correct answer was {sum(number_list)}\n')
+            elif question_type == 3:
+                answer = int(input(f'What is the sum of the numbers in this list? {number_list}\n'
+                                   '> '))
+                if answer == sum(number_list):
+                    print('Correct!\n')
+                    score += 1
+                else:
+                    print(f'Incorrect! Correct answer was {sum(number_list)}\n')
 
-    elif question_type == 4:
-        answer = int(input(f'What is the average of the numbers in this list? {number_list}\n'
-                           '(round UP to nearest integer)\n'
-                           '> '))
-        average = statistics.mean(number_list)  # Calculate the average of the numbers in random list
-        if answer == math.ceil(average):        # Rounds up the average to the nearest integer
-            print('Correct!\n')
-            score += 1
-        else:
-            print(f'Incorrect! Correct answer was {math.ceil(average)}\n')
+            elif question_type == 4:
+                answer = int(input(f'What is the average of the numbers in this list? {number_list}\n'
+                                   '(round UP to nearest integer)\n'
+                                   '> '))
+                average = statistics.mean(number_list)  # Calculate the average of the numbers in random list
+                if answer == math.ceil(average):        # Rounds up the average to the nearest integer
+                    print('Correct!\n')
+                    score += 1
+                else:
+                    print(f'Incorrect! Correct answer was {math.ceil(average)}\n')
+            break
+        except ValueError:
+            print('Try again! Use only an integer.')
+            continue
 
 # Test is complete and the user can see their score
 print('Test Complete!')
