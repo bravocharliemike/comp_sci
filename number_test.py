@@ -15,9 +15,6 @@ Comments to summarise/explain any particularly complex or confusing lines of cod
 code to be as clear and elegant as possible, but sometimes a line or section of code gets tricky,
 so an explanation helps
 """
-
-
-
 import random
 import math
 import statistics
