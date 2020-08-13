@@ -1,3 +1,23 @@
+"""
+Assignment 1: Number List Test Program
+Student: Bernardo CAMEJO
+Student number: XXXXXXX
+
+This program will.....
+Comments at the start of the file to provide
+important metadata such as your name and student number, and perhaps a brief summary of the program
+
+Comments to summarise the purpose/functionality of any functions you define (these should be located
+where the function definition is in your code)
+Comments to summarise/delimit the main "sections" of your code, allowing a reader to rapidly identify or
+find the part of your program that they are interested in
+Comments to summarise/explain any particularly complex or confusing lines of code.  Ideally you should write
+code to be as clear and elegant as possible, but sometimes a line or section of code gets tricky,
+so an explanation helps
+"""
+
+
+
 import random
 import math
 import statistics
@@ -19,19 +39,19 @@ while True:
                   '[M]edium\n'
                   '[H]ard\n'
                   '> ').upper()     # Convert user input to all UPPERCASE
-    if level == 'E':
+    if level == 'E' or level == 'EASY':
         print('Easy difficulty selected!\n')
         questions = 2
         quantity = 3
         minimum, maximum = 1, 5
         break
-    elif level == 'M':
+    elif level == 'M' or level == 'MEDIUM':
         print('Medium difficulty selected!\n')
         questions = 4
         quantity = 5
         minimum, maximum = 3, 12
         break
-    elif level == 'H':
+    elif level == 'H' or level == 'HARD':
         print('Hard difficulty selected!\n')
         questions = 6
         quantity = 8
@@ -40,7 +60,7 @@ while True:
     else:
         print('Invalid choice! Enter E, M or H.')
 
-# Initialise variable to keep track of the user's correct answers
+# Initialise variable score to keep track of the user's correct answers
 score = 0
 
 for i in range(questions):
@@ -48,6 +68,7 @@ for i in range(questions):
     if i + 1 == len(range(questions)):
         print(f'Question {i + 1} of {questions}.')
         print('Challenge Question!')
+        # The Challenge Question uses double the minimum and double the maximum
         number_list = random_list(quantity, minimum * 2, maximum * 2)
 
     # User is not up to last question
