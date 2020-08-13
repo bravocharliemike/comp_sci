@@ -76,6 +76,8 @@ for i in range(questions):
 
     # Randomly show the user different types of questions
     question_type = random.randint(1, 4)
+
+    # Continue looping until user enters an integer as answer
     while True:
         try:
             if question_type == 1:
@@ -116,6 +118,8 @@ for i in range(questions):
                 else:
                     print(f'Incorrect! Correct answer was {math.ceil(average)}\n')
             break
+
+        # Re-prompt user to enter only an integer
         except ValueError:
             print('Try again! Use only an integer.')
             continue
