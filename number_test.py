@@ -59,7 +59,6 @@ while True:
 
 # Initialise variable score to keep track of the user's correct answers
 score = 0
-
 for i, question in enumerate(range(questions), 1):
 
     # User is up to last question so this is Challenge Question
