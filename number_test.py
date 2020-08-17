@@ -21,8 +21,7 @@ import statistics
 
 
 def random_list(qty:int, small:int, big:int) -> list:
-    """Generates a random list of quantity integers between minimum and maximum (inclusive)
-    """
+    """Generates a random list of quantity integers between minimum and maximum (inclusive)"""
     return [random.randint(small, big) for number in range(qty)]
 
 
