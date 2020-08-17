@@ -58,18 +58,16 @@ while True:
 
 # Initialise variable score to keep track of the user's correct answers
 score = 0
-for i, question in enumerate(range(questions), 1):
+for i in range(questions):
+    print(f'Question {i + 1} of {questions}.')
 
     # User is up to last question so this is Challenge Question
-    if i == len(range(questions)):
-        print(f'Question {i} of {questions}.')
+    if i + 1 == len(range(questions)):
         print('Challenge Question!')
         # The Challenge Question uses double the minimum and double the maximum
         number_list = random_list(quantity, minimum * 2, maximum * 2)
-
     # User is not up to last question
     else:
-        print(f'Question {i} of {questions}.')
         number_list = random_list(quantity, minimum, maximum)
 
     # Randomly show the user different types of questions
