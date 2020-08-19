@@ -2,7 +2,7 @@
 Assignment 1: Number List Test Program
 Student: Bernardo CAMEJO
 Student number: 10528885
-Version 1.0
+Version 2.0
 Date: 19/08/2020
 
 This program will generate a "Number List Test" that creates lists of random
@@ -22,11 +22,11 @@ def random_list(quantity: int, minimum: int, maximum: int) -> list:
     return [random.randint(minimum, maximum) for number in range(quantity)]
 
 
-# Start of the program. Welcome message
+# Start of the program
 print('Welcome to the Number List Test program')
 
-# User chooses the difficulty of the test.
-# Variables are set according to the difficulty level.
+# User chooses the difficulty of the test
+# Variables are set according to the difficulty level
 while True:
     level = input('Select a difficulty:\n'
                   '[E]asy\n'

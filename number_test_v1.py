@@ -1,7 +1,8 @@
 """
 Assignment 1: Number List Test Program
 Student: Bernardo CAMEJO
-Student number: XXXXXXX
+Student number: 10528885
+Version 1.0
 
 This program will.....
 Comments at the start of the file to provide
