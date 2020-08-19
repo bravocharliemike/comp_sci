@@ -10,14 +10,6 @@ integers and asks the user different random questions about them. The program
 allows the user to select the difficulty of the test, which determines the
 number of questions in the test, as well as the quantity and range of the
 randomly generated numbers.
-
-Comments to summarise the purpose/functionality of any functions you define (these should be located
-where the function definition is in your code)
-Comments to summarise/delimit the main "sections" of your code, allowing a reader to rapidly identify or
-find the part of your program that they are interested in
-Comments to summarise/explain any particularly complex or confusing lines of code.  Ideally you should write
-code to be as clear and elegant as possible, but sometimes a line or section of code gets tricky,
-so an explanation helps
 """
 import random
 import math
@@ -25,14 +17,16 @@ import statistics
 
 
 def random_list(quantity: int, minimum: int, maximum: int) -> list:
-    """Generates a random list of quantity integers between minimum and maximum (inclusive)"""
+    """Generates a random list of quantity integers between minimum
+    and maximum (inclusive)"""
     return [random.randint(minimum, maximum) for number in range(quantity)]
 
 
-# Beginning of the program
+# Start of the program. Welcome message
 print('Welcome to the Number List Test program')
 
-# Getting the user to select difficulty of the test
+# User chooses the difficulty of the test.
+# Variables are set according to the difficulty level.
 while True:
     level = input('Select a difficulty:\n'
                   '[E]asy\n'
@@ -62,10 +56,13 @@ while True:
 
 # Initialise variable score to keep track of the user's correct answers
 score = 0
+
+# Loop over a specific number of times. Number of iterations are
+# controlled by the difficulty the user chooses
 for i in range(questions):
     print(f'Question {i + 1} of {questions}.')
 
-    # User is up to last question so this is Challenge Question
+    # User is up to last question and are presented with the Challenge Question
     if i + 1 == len(range(questions)):
         print('Challenge Question!')
         # The Challenge Question uses double the minimum and double the maximum
