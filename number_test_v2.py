@@ -13,7 +13,6 @@ randomly generated numbers.
 """
 import random
 import math
-import statistics
 
 
 def random_list(quantity: int, minimum: int, maximum: int) -> list:
@@ -84,7 +83,7 @@ for i in range(questions):
         answer = sum(number_list)
     elif question_type == 4:
         print(f'What is the average of the numbers in this list? {number_list}')
-        average = statistics.mean(number_list)  # First calculate the average of the numbers in random list
+        average = sum(number_list) / len(number_list)  # First calculate the average of the numbers in random list
         answer = math.ceil(average)             # Round up the answer to nearest integer
 
     # Get user input and validate it.
