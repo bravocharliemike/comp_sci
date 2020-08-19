@@ -72,7 +72,6 @@ for i in range(questions):
 
     # Randomly show the user different types of questions
     question_type = random.randint(1, 4)
-
     # Continue looping until user enters an integer as answer
     while True:
         try:
