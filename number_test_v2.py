@@ -100,7 +100,6 @@ for i in range(questions):
             break
         except ValueError:
             print('Try again! Use only an integer.\n')
-            continue
 
 # Test is complete and the user can see their score
 print('Test Complete!')
