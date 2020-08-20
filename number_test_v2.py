@@ -58,8 +58,8 @@ score = 0
 
 # Loop over a specific number of times. Number of iterations are
 # controlled by the difficulty the user chooses
-for i in range(questions):
-    print(f'Question {i + 1} of {questions}.')
+for i in range(1, questions + 1):
+    print(f'Question {i} of {questions}.')
 
     # User is up to last question and are presented with the Challenge Question
     if i + 1 == len(range(questions)):
