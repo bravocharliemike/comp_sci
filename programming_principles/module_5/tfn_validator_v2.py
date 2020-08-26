@@ -31,9 +31,45 @@ def validate_tfn(tfn):
 
 
 # Testing the function
-user_tfn = input('Enter your TFN: ')
+# user_tfn = input('Enter your TFN: ')
+#
+# if validate_tfn(user_tfn):
+#     print("The TFN is valid!")
+# else:
+#     print("The TFN is not valid.")
 
-if validate_tfn(user_tfn):
-    print("The TFN is valid!")
-else:
-    print("The TFN is not valid.")
+# Find the lowest 10 valid TFNs
+MIN_TFN = 100000000
+MAX_TFN = 999999999
+
+l = [] # Holds the valid TFNs
+for i in range(MIN_TFN, MAX_TFN):
+    if len(l) < 10:
+        if validate_tfn(i):
+            print(f'[+] Found valid TFN -> {i}')
+            l.append(i)
+
+# Find the highest 10 valid TFNs
+# Uncomment the code below to find the highest TFNs
+# l = [] # Holds the valid TFNs
+# for i in range(MAX_TFN, MIN_TFN, -1):
+#     if len(l) < 10:
+#         if validate_tfn(i):
+#             print(f'[+] Found valid TFN -> {i}')
+#             l.append(i)
+
+
+# Different approach (seems to fix the issue)
+l = []
+for i in range(MIN_TFN, MAX_TFN):
+    if validate_tfn(i):
+        print(f'[+] Found valid TFN -> {i}')
+        l.append(i)
+
+        # Test how many TFNs already in the list
+        if len(l) == 10:
+            print('Already found 10 valid TFNs. Exiting now...')
+            break
+
+# Output the final list with the lowest valid TFNs
+print(l)
