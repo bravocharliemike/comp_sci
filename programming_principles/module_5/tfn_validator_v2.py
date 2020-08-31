@@ -24,7 +24,7 @@ def validate_tfn(tfn):
     for i in range(len(tfn)):
         x = int(tfn[i]) * weights[i]
         grand_total.append(x)
-    # Or with more Pythonic list comprehension
+    # Or with a list comprehension
     # grand_total = [int(tfn[i]) * weights[i] for i in range(len(tfn))]
 
     return True if sum(grand_total) % 11 == 0 else False
@@ -42,12 +42,12 @@ def validate_tfn(tfn):
 MIN_TFN = 100000000
 MAX_TFN = 999999999
 
-l = [] # Holds the valid TFNs
-for i in range(MIN_TFN, MAX_TFN):
-    if len(l) < 10:
-        if validate_tfn(i):
-            print(f'[+] Found valid TFN -> {i}')
-            l.append(i)
+# l = [] # Holds the valid TFNs
+# for i in range(MIN_TFN, MAX_TFN):
+#     if len(l) < 10:
+#         if validate_tfn(i):
+#             print(f'[+] Found valid TFN -> {i}')
+#             l.append(i)
 
 # Find the highest 10 valid TFNs
 # Uncomment the code below to find the highest TFNs
