@@ -2,8 +2,8 @@
 Assignment 1: Number List Test Program
 Student: Bernardo CAMEJO
 Student number: 10528885
-Version 2.0
-Date: 19/08/2020
+Version 3.0
+Date: 31/08/2020
 
 This program will generate a "Number List Test" that creates lists of random
 integers and asks the user different random questions about them. The program
@@ -13,6 +13,7 @@ randomly generated numbers.
 """
 import random
 import math
+import time
 
 
 def random_list(quantity: int, minimum: int, maximum: int) -> list:
@@ -62,7 +63,7 @@ for i in range(1, questions + 1):
     print(f'Question {i} of {questions}.')
 
     # User is up to last question and are presented with the Challenge Question
-    if i + 1 == len(range(questions)):
+    if i == len(range(questions)):
         print('Challenge Question!')
         # The Challenge Question uses double the minimum and double the maximum
         number_list = random_list(quantity, minimum * 2, maximum * 2)
@@ -83,6 +84,7 @@ for i in range(1, questions + 1):
         answer = sum(number_list)
     elif question_type == 4:
         print(f'What is the average of the numbers in this list? {number_list}')
+        print('(round UP to nearest integer)')
         average = sum(number_list) / len(number_list)  # First calculate the average of the numbers in random list
         answer = math.ceil(average)             # Round up the answer to nearest integer
 
@@ -90,16 +92,24 @@ for i in range(1, questions + 1):
     # If user does not enter an integer continue re-prompting for correct input
     while True:
         try:
+            # Get the current time in seconds to measure how long the user takes to respond
+            now = time.time()
             user_response = int(input('> '))
+            later = time.time()         # Measure time in seconds after the user responds
+
             if user_response == answer:
-                print('Correct!\n')
+                print('Correct!')
                 score += 1
             else:
-                print(f'Incorrect! Correct answer was {answer}\n')
+                print(f'Incorrect! Correct answer was {answer}.')
+            # Tell user how long they took to answer in seconds
+            print(f'You answered in {later - now:.1f} seconds.\n')
             break
         except ValueError:
-            print('Try again! Use only an integer.\n')
+            print('Invalid input! Use only an integer.\n')
 
 # Test is complete and the user can see their score
 print('Test Complete!')
-print(f'You scored {score}/{questions} ({score/questions * 100}%)')
+print(f'You scored {score}/{questions} ({score/questions * 100:.1f}%)')  # Round percentage to one decimal place
+if score == questions:      # User answered all questions correctly
+    print('Perfect score, well done!')
