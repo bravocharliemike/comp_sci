@@ -109,6 +109,7 @@ for i in range(1, questions + 1):
 
 # Test is complete and the user can see their score
 print('Test Complete!')
-print(f'You scored {score}/{questions} ({score/questions * 100:.1f}%)')  # Round percentage to one decimal place
-if score == questions:      # User answered all questions correctly
+percentage = (score / questions) * 100  # Calculate the percentage of correct questions
+print(f'You scored {score}/{questions} ({percentage:.1f}%)')  # Round percentage to one decimal place
+if score == questions:
     print('Perfect score, well done!')
