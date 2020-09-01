@@ -23,7 +23,7 @@ def random_list(quantity: int, minimum: int, maximum: int) -> list:
 
 
 # Start of the program
-print('Welcome to the Number List Test program')
+print('Welcome to the Number List Test program.')
 
 # User chooses the difficulty of the test
 # Variables are set according to the difficulty level
@@ -54,8 +54,7 @@ while True:
     else:
         print('Invalid choice! Enter E, M or H.')
 
-# Initialise variable score to keep track of the user's correct answers
-score = 0
+score = 0  # Initialise variable score to keep track of the user's correct answers
 
 # Loop iterations are controlled by the difficulty selected by user
 for i in range(1, questions + 1):
@@ -70,7 +69,7 @@ for i in range(1, questions + 1):
         number_list = random_list(quantity, minimum, maximum)
 
     # Randomly show the user different types of questions
-    question_type = random.randint(1, 4)
+    question_type = random.randint(1, 6)
     if question_type == 1:
         print(f'What is the smallest number in this list? {number_list}')
         answer = min(number_list)
@@ -85,12 +84,18 @@ for i in range(1, questions + 1):
         print('(round UP to nearest integer)')
         average = sum(number_list) / len(number_list)
         answer = math.ceil(average)
+    elif question_type == 5:
+        print(f'What is the difference between the smallest and biggest numbers in this list? {number_list}')
+        answer = max(number_list) - min(number_list)
+    elif question_type == 6:
+        rand_num = random.choice(number_list)
+        print(f'How many {rand_num}s are there in this list? {number_list}')
+        answer = number_list.count(rand_num)
 
     # Get user input and validate it
     while True:
         try:
-            # Get the current time in seconds to measure how long the user takes to respond
-            now = time.time()
+            now = time.time()       # Get current time to measure how long user takes to answer
             user_response = int(input('> '))
             later = time.time()     # Measure time in seconds after the user responds
 
@@ -108,6 +113,6 @@ for i in range(1, questions + 1):
 # Test is complete and user can see their score
 print('Test Complete!')
 percentage = (score / questions) * 100
-print(f'You scored {score}/{questions} ({percentage:.1f}%)')
+print(f'You scored {score}/{questions} ({percentage:.1f}%).')
 if score == questions:
     print('Perfect score, well done!')
