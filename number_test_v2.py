@@ -84,7 +84,7 @@ for i in range(1, questions + 1):
     elif question_type == 4:
         print(f'What is the average of the numbers in this list? {number_list}')
         print('(round UP to nearest integer)')
-        average = sum(number_list) / len(number_list)  # First calculate the average of the numbers in random list
+        average = sum(number_list) / len(number_list)
         answer = math.ceil(average)            # Round up the answer to nearest integer
 
     # Get user input and validate it.
