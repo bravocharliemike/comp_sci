@@ -32,7 +32,7 @@ while True:
                   '[E]asy\n'
                   '[M]edium\n'
                   '[H]ard\n'
-                  '> ').upper()     # Convert user input to all UPPERCASE
+                  '> ').upper()
     if level == 'E' or level == 'EASY':
         print('Easy difficulty selected!\n')
         questions = 2
@@ -57,14 +57,13 @@ while True:
 # Initialise variable score to keep track of the user's correct answers
 score = 0
 
-# Number of iterations are controlled by the difficulty the user chooses
+# Loop iterations are controlled by the difficulty selected by user
 for i in range(1, questions + 1):
     print(f'Question {i} of {questions}.')
 
     # User is up to last question and are presented with the Challenge Question
     if i == len(range(questions)):
         print('Challenge Question!')
-        # The Challenge Question uses double the minimum and double the maximum
         number_list = random_list(quantity, minimum * 2, maximum * 2)
     # User is not up to last question
     else:
@@ -85,10 +84,9 @@ for i in range(1, questions + 1):
         print(f'What is the average of the numbers in this list? {number_list}')
         print('(round UP to nearest integer)')
         average = sum(number_list) / len(number_list)
-        answer = math.ceil(average)            # Round up the answer to nearest integer
+        answer = math.ceil(average)
 
-    # Get user input and validate it.
-    # If user does not enter an integer continue re-prompting for correct input
+    # Get user input and validate it
     while True:
         try:
             # Get the current time in seconds to measure how long the user takes to respond
@@ -107,9 +105,9 @@ for i in range(1, questions + 1):
         except ValueError:
             print('Invalid input! Use only an integer.\n')
 
-# Test is complete and the user can see their score
+# Test is complete and user can see their score
 print('Test Complete!')
-percentage = (score / questions) * 100  # Calculate the percentage of correct questions
-print(f'You scored {score}/{questions} ({percentage:.1f}%)')  # Round percentage to one decimal place
+percentage = (score / questions) * 100
+print(f'You scored {score}/{questions} ({percentage:.1f}%)')
 if score == questions:
     print('Perfect score, well done!')
