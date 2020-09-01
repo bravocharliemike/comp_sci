@@ -57,8 +57,7 @@ while True:
 # Initialise variable score to keep track of the user's correct answers
 score = 0
 
-# Loop over a specific number of times. Number of iterations are
-# controlled by the difficulty the user chooses
+# Number of iterations are controlled by the difficulty the user chooses
 for i in range(1, questions + 1):
     print(f'Question {i} of {questions}.')
 
