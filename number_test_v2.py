@@ -92,7 +92,7 @@ for i in range(1, questions + 1):
             # Get the current time in seconds to measure how long the user takes to respond
             now = time.time()
             user_response = int(input('> '))
-            later = time.time()         # Measure time in seconds after the user responds
+            later = time.time()     # Measure time in seconds after the user responds
 
             if user_response == answer:
                 print('Correct!')
