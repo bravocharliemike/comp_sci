@@ -22,7 +22,7 @@ def random_list(quantity: int, minimum: int, maximum: int) -> list:
     return [random.randint(minimum, maximum) for number in range(quantity)]
 
 
-# Start of the program
+# ----- Beginning of the program -----
 print('Welcome to the Number List Test program.')
 
 # User chooses the difficulty of the test
@@ -56,7 +56,7 @@ while True:
 
 score = 0  # Initialise variable score to keep track of the user's correct answers
 
-# Loop iterations are controlled by the difficulty selected by user
+# ----- Loop iterations controlled by the difficulty selected by user -----
 for i in range(1, questions + 1):
     print(f'Question {i} of {questions}.')
 
@@ -68,8 +68,9 @@ for i in range(1, questions + 1):
     else:
         number_list = random_list(quantity, minimum, maximum)
 
-    # Randomly show the user different types of questions
+    # Choose a random type of question
     question_type = random.randint(1, 6)
+
     if question_type == 1:
         print(f'What is the smallest number in this list? {number_list}')
         answer = min(number_list)
@@ -92,12 +93,12 @@ for i in range(1, questions + 1):
         print(f'How many {rand_num}s are there in this list? {number_list}')
         answer = number_list.count(rand_num)
 
-    # Get user input and validate it
+    # Get user's response and validate it
     while True:
         try:
-            now = time.time()       # Get current time to measure how long user takes to answer
+            start_time = time.time()                # Get current time to measure how long user takes to answer
             user_response = int(input('> '))
-            later = time.time()     # Measure time in seconds after the user responds
+            time_taken = time.time() - start_time   # Time the user's response
 
             if user_response == answer:
                 print('Correct!')
@@ -105,7 +106,7 @@ for i in range(1, questions + 1):
             else:
                 print(f'Incorrect! Correct answer was {answer}.')
             # Tell user how long they took to answer in seconds
-            print(f'You answered in {later - now:.1f} seconds.\n')
+            print(f'You answered in {time_takenw:.1f} seconds.\n')
             break
         except ValueError:
             print('Invalid input! Use only an integer.\n')
