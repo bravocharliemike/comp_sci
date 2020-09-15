@@ -4,16 +4,13 @@ class DicePile:
 
     def __init__(self, initQuantity, initSides): # constructor
         self.setQuantity(initQuantity)
-        self.setSides(initSides)
-        self.__rollCount = 0
-        self.rolled = False  # flag to detemine if pile has been rolled
+        self.setSides(initSides)       
 
     def __str__(self): # generate a string representation of the object
-        if self.rolled:
-            print('The dice have been rolled!')
-            resultString = str(self.__results) + f' (roll count: {str(self.__rollCount)})' 
+        if self.__results is not None:
+            resultString = str(self.__results) 
         else:
-            resultString = 'not rolled' + f' (roll count: {str(self.__rollCount)})'
+            resultString = 'not rolled' 
 
         dicescription = str(self.__quantity) + 'd' + str(self.__sides)        
         return dicescription + ': ' + resultString
@@ -24,8 +21,7 @@ class DicePile:
 
         for i in range(self.__quantity): # generate random numbers and add to results list
             self.__results.append(random.randint(1, self.__sides)) 
-        self.__rollCount += 1
-        self.rolled = True
+
 
     def getResults(self): # get results list (None if not rolled)
         return self.__results
@@ -36,9 +32,6 @@ class DicePile:
     def getSides(self): # get sides attribute
         return self.__sides
 
-    def getRollCount(self):  # get roll count attribute
-        return self.__rollCount
-
 
     def setQuantity(self, newQuantity): # set quantity attribute
         if int(newQuantity) < 1:
@@ -46,7 +39,6 @@ class DicePile:
         else:
             self.__quantity = int(newQuantity)
             self.__results = None
-            self.rolled = False
 
     def setSides(self, newSides): # set sides attribute
         if int(newSides) < 2:
@@ -54,5 +46,4 @@ class DicePile:
         else:
             self.__sides = int(newSides)
             self.__results = None
-            self.rolled = False
 
