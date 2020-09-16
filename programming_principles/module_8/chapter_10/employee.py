@@ -7,7 +7,11 @@ class Employee:
         self.set_job_title(init_job_title)
 
     def __str__(self):
-        return f'{self.__name}\t\t{self.__id_number}\t\t{self.__department}\t\t{self.__job_title}'
+        result = 'Name: ' + self.get_name() + \
+                '\nID number: ' + self.get_id_number() + \
+                '\nDepartment: ' + self.get_department() + \
+                '\nTitle: ' + self.get_job_title()
+        return result
 
     def set_name(self, new_name):
         self.__name = new_name.title()
