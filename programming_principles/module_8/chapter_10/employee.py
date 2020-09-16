@@ -17,7 +17,7 @@ class Employee:
         self.__name = new_name.title()
 
     def set_id_number(self, new_id_num):
-        self.__id_number = int(new_id_num)
+        self.__id_number = new_id_num
 
     def set_department(self, new_dept):
         self.__department = new_dept
