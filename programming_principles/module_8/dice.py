@@ -2,11 +2,16 @@ import random # we'll need the random module to roll the dice
 
 class DicePile:
 
-    def __init__(self, initQuantity, initSides): # constructor
+    def __init__(self, initQuantity, initSides, rollOnCreate=False): # constructor
         self.setQuantity(initQuantity)
         self.setSides(initSides)
         self.__rollCount = 0
         self.rolled = False  # flag to detemine if pile has been rolled
+        
+        # If user wants to roll the dice right after creating them
+        if rollOnCreate:
+            self.roll()
+        
 
     def __str__(self): # generate a string representation of the object
         if self.rolled:
@@ -15,9 +20,12 @@ class DicePile:
         else:
             resultString = 'not rolled' + f' (roll count: {str(self.__rollCount)})'
 
-        dicescription = str(self.__quantity) + 'd' + str(self.__sides)        
+        dicescription = self.dicescription()  # builds the string
         return dicescription + ': ' + resultString
 
+    def dicescription(self):
+        dicescription = str(self.__quantity) + 'd' + str(self.__sides)
+        return dicescription
 
     def roll(self): # roll the dice
         self.__results = [] # set results to empty list
@@ -55,4 +63,23 @@ class DicePile:
             self.__sides = int(newSides)
             self.__results = None
             self.rolled = False
+
+    def maxTotal(self):
+        """Returns the maximum possible sum of a roll"""
+        return self.__quantity * self.__sides
+
+    def getAverage(self):
+        """Returns the average of the roll results (returns float)"""
+        if self.rolled:
+            average = sum(self.__results) / self.__quantity
+            return average
+        else:
+            raise AttributeError('Dice have not been rolled!')
+
+    def sortResults(self):
+        """Sorts the __results attribute"""
+        if self.rolled:
+            self.__results.sort()
+        else:
+            raise AttributeError('dice have not been rolled')
 
