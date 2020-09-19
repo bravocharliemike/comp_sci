@@ -13,8 +13,10 @@ def main():
     name = fin.readline()
     high_score = 0
     high_scorer = ''
+    counter = 0
 
     while name != '':
+        counter += 1
         name = name.rstrip('\n')
         score = int(fin.readline().rstrip('\n'))
         if score > high_score:
@@ -25,7 +27,9 @@ def main():
     fin.close()
 
     print(f"High scorer: {high_scorer} with score {high_score}")
+    print(f"Ther are {counter} total records")
 
 
-main()
+if __name__ == '__main__':
+    main()
 
