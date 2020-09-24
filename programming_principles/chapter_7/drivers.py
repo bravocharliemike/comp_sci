@@ -10,7 +10,7 @@ def main():
     # define needed variables
     total_correct = 0
     wrong_questions = []
-    
+
     try:
         # Open the user file with their answers
         filename = 'answers.txt'
@@ -24,7 +24,7 @@ def main():
             else:
                 # add question number of incorrectly answered question
                 wrong_questions.append(index + 1)
-        
+
         # print a message if student passes (15/20 right)
         if total_correct >= 15:
             print('You have passed the exam!')
@@ -43,7 +43,7 @@ def main():
         else:
             print('You answered the following questions incorrectly')
             print(wrong_questions)
-    
+
     # handle possible errors
     except IOError:
         print('The file could not be found')
