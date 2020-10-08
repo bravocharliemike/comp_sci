@@ -21,18 +21,20 @@ data = [
 
 # Main body of program
 def search_term(data_list, query):
+
+    found = False
     for index, question in enumerate(data_list):
         question_text = question['question']
-        if query in question_text.lower(): 
+        if query in question_text.lower():
+            found = True
             print(f"{index + 1}) {question_text}")
-        else:
-            print('No results found.')
+    if not found:
+        print('No results found.')
 
 
 def main():
     search_query = input('Enter search term: ').lower()
-    outcome = search_term(data, search_query)
-    print(outcome)
+    search_term(data, search_query)
 
 if __name__ == '__main__':
     main()

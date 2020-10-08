@@ -41,6 +41,16 @@ def list_questions(data_list):
         for index, question in enumerate(data_list):
             print(f"\t{index + 1}) {question['question']}")
 
+def search_question(data_list, search_query):
+    found = False
+    for index, question in enumerate(data_list):
+        question_text = question['question']
+        if search_query in question_text.lower():
+            found = True
+            print(f'\t{index + 1}) {question_text}')
+    if not found:
+        print('No results found.')
+
 # ------ Beginning of program ------
 # Load the data file with the questions
 FILENAME = 'data.txt'
@@ -81,8 +91,20 @@ while True:
         save_data(data)  # Save the questions to the file
 
     # --- USER CHOOSES TO LIST QUESTIONS
-    if user_selection == 'l':
+    elif user_selection == 'l':
         list_questions(data)
 
+    # --- USER CHOOSES TO SEARCH FOR QUESTIONS
+    elif user_selection == 's':
+        search_term = input_something('Enter a search term: ').lower()
+        search_question(data, search_term)
+    
+    # --- USER WANTS TO EXIT
+    elif user_selection == 'q':
+        print('Goodbye!')
+        break
 
-
+    # --- User enters invalid choice
+    else:
+        print('Invalid choice')
+        continue
