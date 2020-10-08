@@ -17,4 +17,4 @@ while True:
     # keep running?
     keep_going = input('Make another walk? (y/n): ')
     if keep_going == 'n':
-        break
+        break   # get out of loop
