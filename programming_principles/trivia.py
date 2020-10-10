@@ -51,6 +51,26 @@ def search_question(data_list, search_query):
     if not found:
         print('No results found.')
 
+def view_question(data_list, num):
+    if len(data_list) < 1:
+        print('There are no questions saved.')
+    else:
+        try:
+            result = data_list[num - 1]  # Subtract one to correspond to index
+            answers_string = ', '.join(result['answers']).title()
+
+            print('\nQuestion:')
+            print(f'\t{result["question"]}\n')
+
+            if len(result['answers']) > 1:
+                print(f'Answers: {answers_string}')
+            else:
+                print(f'Answer: {answers_string}')
+
+            print(f'Difficulty: {result["difficulty"]}')
+        except IndexError:
+            print('Invalid index number')
+
 # ------ Beginning of program ------
 # Load the data file with the questions
 FILENAME = 'data.txt'
@@ -80,6 +100,7 @@ while True:
             difficulty = input_int('Enter question difficulty (1-5): ')
             if (difficulty >= 1) and (difficulty <= 5):
                 break
+            print('Invalid value. Must be an integer between 1 and 5')
 
         question_dict = {
                 'question': question,
@@ -87,6 +108,7 @@ while True:
                 'difficulty': difficulty
                 }
         data.append(question_dict)  # Add the new question to the list
+        print('Question added!')
 
         save_data(data)  # Save the questions to the file
 
@@ -98,7 +120,12 @@ while True:
     elif user_selection == 's':
         search_term = input_something('Enter a search term: ').lower()
         search_question(data, search_term)
-    
+
+    # --- USER WANTS TO VIEW A QUESTION
+    elif user_selection == 'v':
+        question_number = input_int('Question number to view: ')
+        view_question(data, question_number)
+
     # --- USER WANTS TO EXIT
     elif user_selection == 'q':
         print('Goodbye!')
