@@ -61,20 +61,36 @@ def view_question(data_list, num):
 
             print('\nQuestion:')
             print(f'\t{result["question"]}\n')
-
             if len(result['answers']) > 1:
                 print(f'Answers: {answers_string}')
             else:
                 print(f'Answer: {answers_string}')
-
             print(f'Difficulty: {result["difficulty"]}')
         except IndexError:
             print('Invalid index number')
 
-# ------ Beginning of program ------
+def delete_question(data_list, num):
+    if len(data_list) < 1:
+        print('There are no questions saved')
+    else:
+        try:
+            to_delete = data_list[num - 1]  # Substract one to match index
+            data_list.remove(to_delete)
+            print('Question deleted!')
+        except IndexError:
+            print('Invalid index number')
+
+####################################
+# ------ BEGINNING OF PROGRAM ------
+####################################
+
 # Load the data file with the questions
 FILENAME = 'data.txt'
-data = load_file_data(FILENAME)
+try:
+    with open(FILENAME, 'r') as fin:
+        data = json.load(fin)
+except FileNotFoundError:
+    data = []
 
 # ------ Main loop -------
 
@@ -126,12 +142,19 @@ while True:
         question_number = input_int('Question number to view: ')
         view_question(data, question_number)
 
+    # --- USER WANTS TO DELETE A QUESTION
+    elif user_selection == 'd':
+        question_to_delete = input_int('Question number to delete: ')
+        delete_question(data, question_to_delete)
+        save_data(data)  # Save the updated file without the removed question
+
     # --- USER WANTS TO EXIT
     elif user_selection == 'q':
         print('Goodbye!')
         break
 
-    # --- User enters invalid choice
+    # --- USER ENTERS INVALID CHOICE
     else:
         print('Invalid choice')
         continue
+
