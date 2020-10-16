@@ -10,7 +10,7 @@ def input_int(prompt):
         except ValueError:
             continue
         return num
-    
+
 def input_something(prompt):
     while True:
         answer = input(prompt)
